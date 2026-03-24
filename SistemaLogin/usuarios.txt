@@ -1,2 +1,0 @@
-admin,1234,0,Juan,Perez,juan@gmail.com
-user,1111,1,Ana,Rodriguez,ana@gmail.com
