@@ -21,4 +21,18 @@ public class ManejoDeArchivo {
         }
     }
     
+    public void modificarDatos(String cadenaA, String cadenaN, File archivoA) {
+        
+    }
+    
+    public void borrarDatos(File f) {
+        try {
+            if (f.exists()) {
+                f.delete();
+            }
+        }  catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+    
 }

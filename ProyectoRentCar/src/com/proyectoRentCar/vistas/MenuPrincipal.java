@@ -1,6 +1,6 @@
 package com.proyectoRentCar.vistas;
-
-import javax.swing.JDesktopPane;
+import com.proyectoRentCar.mantenimiento.MantUsuario;
+import javax.swing.*;
 
 
 /**
@@ -28,7 +28,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPrincipal = new javax.swing.JDesktopPane();
+        dpMenu = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuMant = new javax.swing.JMenu();
         mantUsuario = new javax.swing.JMenuItem();
@@ -58,15 +58,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-        panelPrincipal.setLayout(panelPrincipalLayout);
-        panelPrincipalLayout.setHorizontalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout dpMenuLayout = new javax.swing.GroupLayout(dpMenu);
+        dpMenu.setLayout(dpMenuLayout);
+        dpMenuLayout.setHorizontalGroup(
+            dpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
-        panelPrincipalLayout.setVerticalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+        dpMenuLayout.setVerticalGroup(
+            dpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 309, Short.MAX_VALUE)
         );
 
         menuMant.setText("Mantenimiento");
@@ -158,18 +158,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal)
+            .addComponent(dpMenu)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal)
+            .addComponent(dpMenu)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mantUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantUsuarioActionPerformed
-        // TODO add your handling code here:
+        new MantUsuario().setVisible(true);
     }//GEN-LAST:event_mantUsuarioActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -180,6 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu consuC;
     private javax.swing.JMenu consuR;
     private javax.swing.JMenu consuV;
+    private javax.swing.JDesktopPane dpMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -203,10 +204,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuMov;
     private javax.swing.JMenuItem movRC;
     private javax.swing.JMenuItem movRV;
-    private javax.swing.JDesktopPane panelPrincipal;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getPanelPrincipal(){
-        return panelPrincipal;
+        return dpMenu;
     }
 }
