@@ -3,10 +3,6 @@ import com.proyectoRentCar.mantenimiento.MantUsuario;
 import javax.swing.*;
 
 
-/**
- *
- * @author Alexander López
- */
 public class MenuPrincipal extends javax.swing.JFrame {
     private int nivelUsuario;
  
@@ -21,6 +17,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             mantGamas.setVisible(false);
             mantVehiculos.setVisible(false);
             mantOfertas.setVisible(false);
+            mantUsuario1.setVisible(false);
+            
         }
     }
 
@@ -30,8 +28,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         dpMenu = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuMant = new javax.swing.JMenu();
-        mantUsuario = new javax.swing.JMenuItem();
+        mantRegistro = new javax.swing.JMenu();
+        mantUsuario1 = new javax.swing.JMenuItem();
         mantGamas = new javax.swing.JMenuItem();
         mantVehiculos = new javax.swing.JMenuItem();
         mantClientes = new javax.swing.JMenuItem();
@@ -69,25 +67,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 309, Short.MAX_VALUE)
         );
 
-        menuMant.setText("Mantenimiento");
+        mantRegistro.setText("Mantenimiento");
 
-        mantUsuario.setText("Usuarios");
-        mantUsuario.addActionListener(this::mantUsuarioActionPerformed);
-        menuMant.add(mantUsuario);
+        mantUsuario1.setText("Registrar Usuario");
+        mantUsuario1.addActionListener(this::mantUsuario1ActionPerformed);
+        mantRegistro.add(mantUsuario1);
 
         mantGamas.setText("Gamas");
-        menuMant.add(mantGamas);
+        mantRegistro.add(mantGamas);
 
         mantVehiculos.setText("Vehículos");
-        menuMant.add(mantVehiculos);
+        mantRegistro.add(mantVehiculos);
 
         mantClientes.setText("Clientes");
-        menuMant.add(mantClientes);
+        mantRegistro.add(mantClientes);
 
         mantOfertas.setText("Ofertas");
-        menuMant.add(mantOfertas);
+        mantRegistro.add(mantOfertas);
 
-        jMenuBar1.add(menuMant);
+        jMenuBar1.add(mantRegistro);
 
         menuMov.setText("Movimiento");
 
@@ -168,13 +166,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mantUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantUsuarioActionPerformed
-        new MantUsuario().setVisible(true);
-    }//GEN-LAST:event_mantUsuarioActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void mantUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantUsuario1ActionPerformed
+        new MantUsuario().setVisible(true);
+    }//GEN-LAST:event_mantUsuario1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu consuC;
@@ -197,10 +195,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mantClientes;
     private javax.swing.JMenuItem mantGamas;
     private javax.swing.JMenuItem mantOfertas;
-    private javax.swing.JMenuItem mantUsuario;
+    private javax.swing.JMenu mantRegistro;
+    private javax.swing.JMenuItem mantUsuario1;
     private javax.swing.JMenuItem mantVehiculos;
     private javax.swing.JMenu menuConsult;
-    private javax.swing.JMenu menuMant;
     private javax.swing.JMenu menuMov;
     private javax.swing.JMenuItem movRC;
     private javax.swing.JMenuItem movRV;

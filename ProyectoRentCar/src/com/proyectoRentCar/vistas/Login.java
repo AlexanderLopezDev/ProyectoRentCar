@@ -55,13 +55,13 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 190, -1));
 
         btnLogin.addActionListener(this::btnLoginActionPerformed);
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 230, 40));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 230, 40));
 
         btnSalir.addActionListener(this::btnSalirActionPerformed);
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 240, 40));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 240, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/proyectoRentCar/imagenes/imagenloginn.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-360, 0, 670, 450));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-360, 10, 670, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
