@@ -1,17 +1,28 @@
 package com.proyectoRentCar.vistas;
 
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
 
     public Login() {
-        initComponents();
+        initComponents();      
+
+        JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(900, 515));
+
+        add(panel);
+
+        pack();
+        setLocationRelativeTo(null);
+
 
         txtUsuario.setOpaque(false);
         txtUsuario.setBackground(new java.awt.Color(0,0,0,0));
@@ -41,27 +52,46 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        loginPanel = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        btnLogin = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setSize(new java.awt.Dimension(900, 515));
 
-        txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
-        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 190, 20));
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 190, -1));
-
-        btnLogin.addActionListener(this::btnLoginActionPerformed);
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 230, 40));
+        loginPanel.setPreferredSize(new java.awt.Dimension(900, 515));
+        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSalir.addActionListener(this::btnSalirActionPerformed);
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 240, 40));
+        loginPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 240, 40));
 
+        btnLogin.addActionListener(this::btnLoginActionPerformed);
+        loginPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 230, 40));
+
+        txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
+        loginPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 190, 20));
+        loginPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 190, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/proyectoRentCar/imagenes/imagenloginn.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-360, 10, 670, 450));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, -1, 520));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 900, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,31 +112,34 @@ public class Login extends javax.swing.JFrame {
                 String linea;
                
                 while ((linea = br.readLine()) != null) {
-                    String datos[] = linea.split(",");  
+                    if (linea.trim().isEmpty()) continue;
+                    String datos[] = linea.split(";");  
+                    
+                    if (datos.length < 6) continue;
+                    
                     String login = datos[0];
                     String pass = datos[1];
                     nivel = Integer.parseInt(datos[2]);
                    
                     if (usuario.equals(login) && password.equals(pass)) {
                         encontrado = true;
+                        if (nivel == 0) {
+                            new MenuPrincipal(0).setVisible(true);
+                        } else {
+                            new MenuPrincipal(1).setVisible(true);
+                        }
+
+                        this.dispose();                       
                         break;
-                    }
-                }  
-            }
-
-            if (encontrado) {
-                JOptionPane.showMessageDialog(this, "Bienvenido");
-                if (nivel == 0) {
-                    new MenuPrincipal(0).setVisible(true);
-                } else {
-                    new MenuPrincipal(1).setVisible(true);
+                    }                                       
                 }
-
-                this.dispose();
-
-            } else {
+                
+                if (!encontrado){
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+                }
             }
+
+            
 
         } catch (HeadlessException | IOException | NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
@@ -125,6 +158,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

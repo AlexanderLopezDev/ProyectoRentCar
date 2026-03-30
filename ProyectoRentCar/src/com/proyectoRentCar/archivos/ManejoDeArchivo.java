@@ -14,10 +14,11 @@ public class ManejoDeArchivo {
             if (!archivo.exists()) {
                 archivo.createNewFile();
             }
-            
-            BufferedWriter bw = new BufferedWriter(new FileWriter("usuarios.txt"));
-            bw.write(cadena + "\r\n");
-            bw.close();
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo,true))) {
+                bw.write(cadena);
+                bw.newLine();
+            }
+                
         } catch(IOException e) {
             System.out.println(e);
         }
@@ -25,7 +26,7 @@ public class ManejoDeArchivo {
     
     public void ModificarDatos(String cadenaA, String cadenaN, File archivoA) { 
         
-        File archivoN = new File(archivoA.getParent(),"usuarios.txt");
+        File archivoN = new File("archivoTemp");
         
         try (
             BufferedReader br = new BufferedReader(new FileReader(archivoA));

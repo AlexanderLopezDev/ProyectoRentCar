@@ -1,8 +1,9 @@
 package com.proyectoRentCar.mantenimiento;
 
+import com.proyectoRentCar.archivos.ManejoDeArchivo;
 import com.proyectoRentCar.vistas.MenuPrincipal;
-import java.awt.HeadlessException;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.*;
@@ -12,19 +13,45 @@ public class MantUsuario extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MantUsuario.class.getName());
 
     static ButtonGroup btnG = new ButtonGroup();
-    public MantUsuario() {
+    boolean lbEstadoB = false;
+    String lineaOriginal = "";
+    private int nivelUsuario;
+    
+    public MantUsuario(int nivel) {
         initComponents();
-        
+        this.nivelUsuario = nivel;
+        btnGuardar.setEnabled(false);
         btnG.add(rbAdmin);
         btnG.add(rbUser);
         
+        
+    }
+    
+     public void bloquearCampos() {
+        rbAdmin.setEnabled(false);
+        rbUser.setEnabled(false);
+        txtPass.setEditable(false);
+        txtNombre.setEditable(false);
+        txtApellidos.setEditable(false);
+        txtCorreo.setEditable(false);
+         
+    }
+    
+    public void habilitarCampos() {
+        rbAdmin.setEnabled(true);
+        rbUser.setEnabled(true);
+        txtPass.setEditable(true);
+        txtNombre.setEditable(true);
+        txtApellidos.setEditable(true);
+        txtCorreo.setEditable(true);
+           
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        menuPanel = new javax.swing.JPanel();
         lbEstado = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
@@ -47,69 +74,64 @@ public class MantUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(480, 330));
 
-        jPanel1.setBackground(new java.awt.Color(230, 235, 240));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registrar Usuario"));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        menuPanel.setBackground(new java.awt.Color(0, 153, 153));
+        menuPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mantenimiento Usuario"));
+        menuPanel.setPreferredSize(new java.awt.Dimension(660, 296));
 
         lbEstado.setEditable(false);
-        lbEstado.setBackground(new java.awt.Color(230, 235, 240));
+        lbEstado.setBackground(new java.awt.Color(0, 153, 153));
         lbEstado.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
         lbEstado.addActionListener(this::lbEstadoActionPerformed);
-        jPanel1.add(lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 110, -1));
 
         txtNombre.setEditable(false);
         txtNombre.addActionListener(this::txtNombreActionPerformed);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 143, 164, -1));
 
         txtApellidos.setEditable(false);
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 177, 164, -1));
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 62, 164, -1));
 
         txtCorreo.setEditable(false);
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 256, 164, -1));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Usuario");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 65, -1, -1));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 106, -1, -1));
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nombre");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 146, -1, -1));
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Apellidos");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 180, -1, -1));
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Nivel");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 219, -1, -1));
 
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Correo");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 259, -1, -1));
 
-        rbAdmin.setBackground(new java.awt.Color(230, 235, 240));
+        rbAdmin.setBackground(new java.awt.Color(0, 153, 153));
         rbAdmin.setText("Admin");
         rbAdmin.setEnabled(false);
-        jPanel1.add(rbAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 217, -1, -1));
 
-        rbUser.setBackground(new java.awt.Color(230, 235, 240));
+        rbUser.setBackground(new java.awt.Color(0, 153, 153));
         rbUser.setText("User Normal");
         rbUser.setEnabled(false);
-        jPanel1.add(rbUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 217, -1, -1));
 
+        btnGuardar.setBackground(new java.awt.Color(0, 204, 204));
         btnGuardar.setText("Guardar");
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 290, -1, -1));
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
+        btnLimpiar.setBackground(new java.awt.Color(0, 204, 204));
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
-        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 290, -1, -1));
 
+        btnVolver.setBackground(new java.awt.Color(0, 204, 204));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(this::btnVolverActionPerformed);
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 290, -1, -1));
 
+        btnBuscar.setBackground(new java.awt.Color(0, 204, 204));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 62, -1, -1));
 
         txtPass.setEditable(false);
         txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -117,21 +139,119 @@ public class MantUsuario extends javax.swing.JFrame {
                 txtPassKeyPressed(evt);
             }
         });
-        jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 103, 164, -1));
+
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(lbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rbAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(rbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(294, 294, 294)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(14, 14, 14)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4))
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel5))
+                    .addComponent(rbAdmin)
+                    .addComponent(rbUser))
+                .addGap(16, 16, 16)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel6))
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnVolver)
+                    .addComponent(btnLimpiar)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 910, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGap(0, 538, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,9 +275,12 @@ public class MantUsuario extends javax.swing.JFrame {
         
         bloquearCampos();
         lbEstado.setText("");
+        lbEstadoB = false;
+        lineaOriginal = "";
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        new MenuPrincipal(nivelUsuario).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
@@ -176,40 +299,54 @@ public class MantUsuario extends javax.swing.JFrame {
                 String linea;
                
                 while ((linea = br.readLine()) != null) {
-                    String datos[] = linea.split(",");  
+                    
+                    if (linea.trim().isEmpty()) continue;
+                    String datos[] = linea.split(";");  
+                    
+                    if (datos.length < 6) continue;
+                    
                     String usua = datos[0];
-                    String pass = datos[1];
                     int nivel = Integer.parseInt(datos[2]);
                     
                     if (usua.equals(usuario)) {
+                        btnGuardar.setEnabled(true);
+
+                        lineaOriginal = linea;
+                        lbEstadoB = true;
+                        
+                        txtPass.setText(datos[1]);
+                        txtNombre.setText(datos[3]);
+                        txtApellidos.setText(datos[4]);
+                        txtCorreo.setText(datos[5]);
+                        
                         if (nivel == 0){
                             rbAdmin.setSelected(true);
                         } else if(nivel == 1) {
                             rbUser.setSelected(true);
                         }
-                        txtPass.setText(datos[2]);
-                        txtNombre.setText(datos[3]);
-                        txtApellidos.setText(datos[4]);
-                        txtCorreo.setText(datos[5]);
                         
                         lbEstado.setText("MODIFICANDO...");
-                        
                         habilitarCampos();
+                        
                         encontrado = true;
-                    } else if(!encontrado) {
-                      
-                        rbAdmin.setSelected(false);                        
-                        rbUser.setSelected(false);
-                        txtPass.setText("");
-                        txtNombre.setText("");
-                        txtApellidos.setText("");
-                        txtCorreo.setText("");
-                        
-                        lbEstado.setText("CREANDO...");
-                        
-                        habilitarCampos();
+                        break;                                                
                     }
-                }  
+                }
+                if (!encontrado) {
+                    btnGuardar.setEnabled(true);
+                    lineaOriginal = "";
+                    lbEstadoB = false;
+                      
+                    rbAdmin.setSelected(false);                        
+                    rbUser.setSelected(false);
+                    txtPass.setText("");
+                    txtNombre.setText("");
+                    txtApellidos.setText("");
+                    txtCorreo.setText("");
+                        
+                    lbEstado.setText("CREANDO...");
+                    habilitarCampos();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -219,24 +356,45 @@ public class MantUsuario extends javax.swing.JFrame {
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         
     }//GEN-LAST:event_txtPassKeyPressed
-    public void bloquearCampos() {
-        rbAdmin.setEnabled(false);
-        rbUser.setEnabled(false);
-        txtPass.setEditable(false);
-        txtNombre.setEditable(false);
-        txtApellidos.setEditable(false);
-        txtCorreo.setEditable(false);
-    }
-    
-    public void habilitarCampos() {
-        rbAdmin.setEnabled(true);
-        rbUser.setEnabled(true);
-        txtPass.setEditable(true);
-        txtNombre.setEditable(true);
-        txtApellidos.setEditable(true);
-        txtCorreo.setEditable(true);
-    }
-    
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        File archivoA = new File("usuarios.txt");
+        
+        String usuario = txtUsuario.getText();
+        String pass = String.valueOf(txtPass.getPassword());
+        String nombre = txtNombre.getText();
+        String apellidos = txtApellidos.getText();
+        String correo = txtCorreo.getText();
+        ButtonModel seleccionado = btnG.getSelection();
+        int nivel = -1;
+        
+        if (rbAdmin.isSelected()) {
+            nivel = 0;
+        } else if (rbUser.isSelected()) {
+            nivel = 1;
+        }       
+        nivelUsuario = nivel;
+        if (usuario.isEmpty() || pass.isEmpty() || nombre.isEmpty() || apellidos.isEmpty() || correo.isEmpty() || seleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Todos los campos deben ser rellenado");
+        }
+        
+        String datos = usuario + ";" + pass + ";" + nivel + ";" + nombre + ";" + apellidos + ";" + correo;
+        
+        if (lbEstadoB) {
+            ManejoDeArchivo ma = new ManejoDeArchivo();
+            ma.ModificarDatos(lineaOriginal, datos, archivoA);
+            
+            lineaOriginal = datos;
+            JOptionPane.showMessageDialog(this, "Datos modificados correctamente");
+        } else {
+            ManejoDeArchivo ma = new ManejoDeArchivo();
+            ma.GuardarDatos(datos, archivoA);
+            
+            JOptionPane.showMessageDialog(this, "Datos registrado correctamente");
+        }
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
@@ -248,8 +406,8 @@ public class MantUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField lbEstado;
+    private javax.swing.JPanel menuPanel;
     private javax.swing.JRadioButton rbAdmin;
     private javax.swing.JRadioButton rbUser;
     private javax.swing.JTextField txtApellidos;
