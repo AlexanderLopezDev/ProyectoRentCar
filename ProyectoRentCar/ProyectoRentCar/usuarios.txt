@@ -1,2 +1,5 @@
-admin,1234,0,Juan,Perez,juan@gmail.com
-user,1111,1,Ana,Rodriguez,ana@gmail.com
+admin;1234;0;Juan;Perez;Juan@gmail.com
+user;1111;1;Ana;Rodriguez;ana@gmail.com
+Alexander;091220;0;Alexander;Lopez Bueno;alexlobu@gmail.com
+Pedro;1234;1;Pedro;Sanchez;pedroSanchez@gmail.com
+Eury;2610;0;Eury;Colon Tejada;eury@gamil.com
