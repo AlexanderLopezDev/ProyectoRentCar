@@ -1,7 +1,7 @@
 package com.proyectoRentCar.vistas;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,11 +10,10 @@ import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
-
     public Login() {
         initComponents();      
-
+        txtUsuario.setForeground(Color.BLACK);
+        txtPassword.setForeground(Color.BLACK);
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(900, 515));
 
@@ -27,13 +26,13 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setOpaque(false);
         txtUsuario.setBackground(new java.awt.Color(0,0,0,0));
         txtUsuario.setBorder(null);
-        txtUsuario.setForeground(java.awt.Color.WHITE);
+        txtUsuario.setForeground(java.awt.Color.BLACK);
         txtUsuario.setCaretColor(java.awt.Color.WHITE);
 
         txtPassword.setOpaque(false);
         txtPassword.setBackground(new java.awt.Color(0,0,0,0));
         txtPassword.setBorder(null);
-        txtPassword.setForeground(java.awt.Color.WHITE);
+        txtPassword.setForeground(java.awt.Color.BLACK);
         txtPassword.setCaretColor(java.awt.Color.WHITE);
         btnLogin.setContentAreaFilled(false);  // Quita fondo
         btnLogin.setBorderPainted(false);      // Quita borde
@@ -57,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
+        icono = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(900, 515));
@@ -66,26 +65,29 @@ public class Login extends javax.swing.JFrame {
         loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSalir.addActionListener(this::btnSalirActionPerformed);
-        loginPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 240, 40));
+        loginPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 240, 70));
 
         btnLogin.addActionListener(this::btnLoginActionPerformed);
-        loginPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 230, 40));
+        loginPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 230, 70));
 
-        txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
-        loginPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 190, 20));
-        loginPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 190, -1));
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtUsuario.setActionCommand("<Not Set>");
+        loginPanel.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 320, 40));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/proyectoRentCar/imagenes/imagenloginn.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        loginPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, -1, 520));
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        loginPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 280, 40));
+
+        icono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/proyectoRentCar/imagenes/imagen6.png"))); // NOI18N
+        icono.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginPanel.add(icono, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 830));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 900, Short.MAX_VALUE)
+                .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,7 +103,7 @@ public class Login extends javax.swing.JFrame {
         String password = String.valueOf(txtPassword.getPassword());
 
         boolean encontrado = false;
-        int nivel = -1;
+        int nivel;
         if (usuario.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
             return; // Detiene el proceso aquí
@@ -150,14 +152,10 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-   
-    }//GEN-LAST:event_txtUsuarioActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel icono;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;

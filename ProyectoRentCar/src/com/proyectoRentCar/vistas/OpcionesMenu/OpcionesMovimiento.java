@@ -18,21 +18,27 @@ public class OpcionesMovimiento extends javax.swing.JPanel {
         btnRC = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        OpcionesMovimiento.setBackground(new java.awt.Color(0, 204, 204));
+        OpcionesMovimiento.setBackground(new java.awt.Color(255, 255, 255));
         OpcionesMovimiento.setPreferredSize(new java.awt.Dimension(660, 296));
 
         btnRV.setBackground(new java.awt.Color(0, 153, 153));
+        btnRV.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
+        btnRV.setForeground(new java.awt.Color(255, 255, 255));
         btnRV.setText("Recepción Vehículos");
         btnRV.setBorder(new javax.swing.border.MatteBorder(null));
         btnRV.setBorderPainted(false);
+        btnRV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnRC.setBackground(new java.awt.Color(0, 153, 153));
+        btnRC.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
+        btnRC.setForeground(new java.awt.Color(255, 255, 255));
         btnRC.setText("Reservas Clientes");
         btnRC.setBorder(new javax.swing.border.MatteBorder(null));
         btnRC.setBorderPainted(false);
+        btnRC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRC.addActionListener(this::btnRCActionPerformed);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MOVIMIENTOS");
 

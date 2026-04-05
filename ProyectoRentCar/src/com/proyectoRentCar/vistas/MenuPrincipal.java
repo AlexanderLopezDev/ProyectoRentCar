@@ -4,7 +4,6 @@ import com.proyectoRentCar.vistas.OpcionesMenu.OpcionesMantenimiento;
 import com.proyectoRentCar.vistas.OpcionesMenu.OpcionesMovimiento;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import javax.swing.*;
 
 
@@ -14,7 +13,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal(int nivel) {  
         this.nivelUsuario = nivel;       
         initComponents();       
-        propiedadesMenu();
        
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(900, 515));
@@ -24,15 +22,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
            
-    }
-
-    private void propiedadesMenu() {
-        lbTitulo.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
-        tituloMenu.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
-        btnMant.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
-        btnMov.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
-        btnCon.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
-        btnCerrar.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
     }
 
     @SuppressWarnings("unchecked")
@@ -52,18 +41,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 515));
 
         dpPrincipal.setBackground(new java.awt.Color(0, 204, 204));
 
         menu.setBackground(new java.awt.Color(0, 153, 153));
 
-        tituloMenu.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        tituloMenu.setFont(new java.awt.Font("Vivaldi", 0, 48)); // NOI18N
         tituloMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloMenu.setText("Menu");
 
-        btnMant.setBackground(new java.awt.Color(0, 204, 204));
-        btnMant.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnMant.setBackground(new java.awt.Color(0, 153, 153));
+        btnMant.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
         btnMant.setForeground(new java.awt.Color(255, 255, 255));
         btnMant.setText("Mantenimiento");
         btnMant.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -72,26 +60,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnMant.setPreferredSize(new java.awt.Dimension(16, 16));
         btnMant.addActionListener(this::btnMantActionPerformed);
 
-        btnMov.setBackground(new java.awt.Color(0, 204, 204));
-        btnMov.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnMov.setBackground(new java.awt.Color(0, 153, 153));
+        btnMov.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
         btnMov.setForeground(new java.awt.Color(255, 255, 255));
         btnMov.setText("Movimiento");
         btnMov.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnMov.setBorderPainted(false);
+        btnMov.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMov.addActionListener(this::btnMovActionPerformed);
 
-        btnCon.setBackground(new java.awt.Color(0, 204, 204));
-        btnCon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCon.setBackground(new java.awt.Color(0, 153, 153));
+        btnCon.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
         btnCon.setForeground(new java.awt.Color(255, 255, 255));
         btnCon.setText("Consultar");
         btnCon.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
         btnCon.setBorderPainted(false);
+        btnCon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCon.addActionListener(this::btnConActionPerformed);
 
-        btnCerrar.setBackground(new java.awt.Color(0, 204, 204));
+        btnCerrar.setBackground(new java.awt.Color(0, 153, 153));
+        btnCerrar.setFont(new java.awt.Font("Baskerville Old Face", 0, 18)); // NOI18N
         btnCerrar.setText("Cerrar Sección");
         btnCerrar.setBorder(null);
         btnCerrar.setBorderPainted(false);
+        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrar.addActionListener(this::btnCerrarActionPerformed);
 
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
@@ -119,19 +111,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(btnMant, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(btnMant, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(btnMov, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(btnMov, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(btnCon, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                .addComponent(btnCon, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                 .addGap(60, 60, 60)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
         );
 
-        header.setBackground(new java.awt.Color(0, 204, 204));
+        header.setBackground(new java.awt.Color(255, 255, 255));
 
         lbTitulo.setBackground(new java.awt.Color(255, 255, 255));
-        lbTitulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lbTitulo.setFont(new java.awt.Font("Baskerville Old Face", 0, 48)); // NOI18N
         lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitulo.setText("RENT CAR");
 
@@ -152,7 +144,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(57, 57, 57))
         );
 
-        panelContenido.setBackground(new java.awt.Color(0, 204, 204));
+        panelContenido.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
         panelContenido.setLayout(panelContenidoLayout);

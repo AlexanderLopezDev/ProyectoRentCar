@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/vistas/Login.java</file>
             <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/vistas/MenuPrincipal.java</file>
-            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/Main.java</file>
             <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/archivos/ManejoDeArchivo.java</file>
             <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantUsuario.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantGamas.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantVehiculos.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/vistas/OpcionesMenu/OpcionesMantenimiento.java</file>
         </group>
     </open-files>
 </project-private>

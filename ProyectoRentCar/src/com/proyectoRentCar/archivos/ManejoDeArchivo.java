@@ -26,7 +26,7 @@ public class ManejoDeArchivo {
     
     public void ModificarDatos(String cadenaA, String cadenaN, File archivoA) { 
         
-        File archivoN = new File("archivoTemp");
+        File archivoN = new File("archivoTemp.txt");
         
         try (
             BufferedReader br = new BufferedReader(new FileReader(archivoA));
@@ -34,7 +34,11 @@ public class ManejoDeArchivo {
         ) {
             String linea;
             while ((linea = br.readLine()) != null) {
-                if (linea.equals(cadenaA)) {
+                
+                String datos[] = linea.split(";");
+                String datosA[] = cadenaA.split(";");
+                
+                if (datos[0].equals(datosA[0])) {
                     bw.write(cadenaN);
                 } else {
                     bw.write(linea);
@@ -48,7 +52,7 @@ public class ManejoDeArchivo {
         
         if (!archivoA.delete()) {
             System.out.println("No se pudo borrar el archivo original");
-        return;
+            return;
         }
         
          if (!archivoN.renameTo(archivoA)) {
@@ -65,6 +69,37 @@ public class ManejoDeArchivo {
         }  catch(Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public String[] BuscarDatos(String valor, File archivo) {
+        
+        if (!archivo.exists()) {
+            try {
+                archivo.createNewFile();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
+        
+        try (BufferedReader br = new BufferedReader(new FileReader (archivo))) {
+            
+            String linea;
+            while((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) continue;
+                String datos[] = linea.split(";");
+                
+                if (datos.length < 1) continue;
+                
+                String valorG = datos[0];
+                
+                if (valorG.equals(valor)) {
+                    return datos;
+                }
+            }
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+        return null;
     }
     
 }
