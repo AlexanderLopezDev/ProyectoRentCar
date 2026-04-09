@@ -1,5 +1,6 @@
 package com.proyectoRentCar.vistas.OpcionesMenu;
 
+import com.proyectoRentCar.mantenimiento.MantOferta;
 import com.proyectoRentCar.mantenimiento.MantGamas;
 import com.proyectoRentCar.mantenimiento.MantUsuario;
 import com.proyectoRentCar.mantenimiento.MantVehiculos;
@@ -7,7 +8,7 @@ import javax.swing.*;
 
 public class OpcionesMantenimiento extends javax.swing.JPanel {
 
-    private int nivelUsuario;
+    private final int nivelUsuario;
     public OpcionesMantenimiento(int nivel) {
         this.nivelUsuario = nivel;
         initComponents();
@@ -67,6 +68,7 @@ public class OpcionesMantenimiento extends javax.swing.JPanel {
         btnOfertas.setBorder(new javax.swing.border.MatteBorder(null));
         btnOfertas.setBorderPainted(false);
         btnOfertas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOfertas.addActionListener(this::btnOfertasActionPerformed);
         OpcionesMantenimiento.add(btnOfertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 134, 30));
 
         btnCten.setBackground(new java.awt.Color(0, 153, 153));
@@ -126,6 +128,10 @@ public class OpcionesMantenimiento extends javax.swing.JPanel {
     private void btnGamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGamasActionPerformed
         configurarVentana(new MantGamas(nivelUsuario));     
     }//GEN-LAST:event_btnGamasActionPerformed
+
+    private void btnOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertasActionPerformed
+        configurarVentana(new MantOferta());
+    }//GEN-LAST:event_btnOfertasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

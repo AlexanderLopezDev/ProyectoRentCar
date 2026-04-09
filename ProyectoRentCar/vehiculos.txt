@@ -1,2 +1,1 @@
-
-G0912;Jeep;Patriot;Normal;Gasolina;Vehiculo 2x4;false;true;false;Azul;true;true
+G2610;Jeep;Patriot;Normal;Gasolina;Vehiculo 2x4;false;true;false;Negro;true;true;0911

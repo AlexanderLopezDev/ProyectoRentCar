@@ -301,7 +301,7 @@ public class MantUsuario extends javax.swing.JFrame {
        
         if (usuario.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese Usuario");
-            return; // Detiene el proceso aquí
+            return;  
         }
         
         ManejoDeArchivo maU = new ManejoDeArchivo();

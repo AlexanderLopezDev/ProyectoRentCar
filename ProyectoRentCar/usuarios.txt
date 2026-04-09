@@ -2,5 +2,5 @@ admin;1234;0;Juan;Perez Perez;JuanPerez@gmail.com
 user;1111;1;Ana;Rodriguez;ana@gmail.com
 Alexander;091220;0;Alexander;Lopez Bueno;Alexander@gmail.com
 Pedro;1234;1;Pedro;Sanchez;pedroSanchez@gmail.com
-Eury;2610;0;Eury;Colon Tejada;eury@gamil.com
+eury;2610;0;Eury;Colon Tejada;eury@gamil.com
 fmj;1234;1;Fausto;Martinez;fmj@gmail.com
