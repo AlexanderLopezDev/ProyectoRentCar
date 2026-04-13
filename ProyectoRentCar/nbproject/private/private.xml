@@ -3,20 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/vistas/Login.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/Main.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/archivos/ManejoDeArchivo.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/imagenes/ImagenPrincipalM.png</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/imagenes/fondos.jpg</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/vistas/MenuPrincipal.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/imagenes/imagelogin.jpg</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/imagenes/imagenloginn.png</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantUsuario.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantGamas.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantVehiculos.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantOferta.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/vistas/OpcionesMenu/OpcionesConsulta.java</file>
-            <file>file:/C:/Users/PC/Downloads/ProyectoRentCar/ProyectoRentCar/src/com/proyectoRentCar/vistas/OpcionesMenu/OpcionesMantenimiento.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/vistas/Login.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/archivos/ManejoDeArchivo.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantUsuario.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantGamas.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantVehiculos.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantOferta.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/vistas/OpcionesMenu/OpcionesMantenimiento.java</file>
+            <file>file:/C:/Users/alexa/Documents/NetBeansProjects/ProyectoRentCar/src/com/proyectoRentCar/mantenimiento/MantClientes.java</file>
         </group>
     </open-files>
 </project-private>

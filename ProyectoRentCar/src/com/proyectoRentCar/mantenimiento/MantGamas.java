@@ -15,7 +15,8 @@ public class MantGamas extends javax.swing.JFrame {
     public MantGamas(int nivel) {
         initComponents();
         this.nivelUsuario = nivel;
-        btnGuardar.setEnabled(false);
+        
+        txtIDGama.addActionListener(e -> btnBuscar.doClick());
     }
     
         public void bloquearCampos() {

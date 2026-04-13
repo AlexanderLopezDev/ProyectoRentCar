@@ -17,10 +17,12 @@ public class MantUsuario extends javax.swing.JFrame {
         this.nivelUsuario = nivel;
         
         btnG.add(rbAdmin);
-        btnG.add(rbUser);            
+        btnG.add(rbUser);   
+        
+        txtUsuario.addActionListener(e -> btnBuscar.doClick());
     }
     
-     public void bloquearCampos() {
+    public void bloquearCampos() {
          txtUsuario.setEditable(true);
         rbAdmin.setEnabled(false);
         rbUser.setEnabled(false);
@@ -301,7 +303,7 @@ public class MantUsuario extends javax.swing.JFrame {
        
         if (usuario.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese Usuario");
-            return;  
+            return; // Detiene el proceso aquí
         }
         
         ManejoDeArchivo maU = new ManejoDeArchivo();

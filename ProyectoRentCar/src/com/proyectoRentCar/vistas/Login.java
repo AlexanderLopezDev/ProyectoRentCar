@@ -44,6 +44,9 @@ public class Login extends javax.swing.JFrame {
         btnSalir.setFocusPainted(false);
         btnSalir.setForeground(java.awt.Color.WHITE);
         
+        txtUsuario.addActionListener(e -> btnLogin.doClick());
+        txtPassword.addActionListener(e -> btnLogin.doClick());
+        
       } 
 
  
@@ -68,6 +71,11 @@ public class Login extends javax.swing.JFrame {
         loginPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 240, 70));
 
         btnLogin.addActionListener(this::btnLoginActionPerformed);
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginKeyPressed(evt);
+            }
+        });
         loginPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 230, 70));
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -148,9 +156,15 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    
+    
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;

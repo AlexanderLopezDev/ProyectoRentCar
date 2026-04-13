@@ -1,14 +1,15 @@
 package com.proyectoRentCar.vistas.OpcionesMenu;
 
-import com.proyectoRentCar.mantenimiento.MantOferta;
+import com.proyectoRentCar.mantenimiento.MantClientes;
 import com.proyectoRentCar.mantenimiento.MantGamas;
+import com.proyectoRentCar.mantenimiento.MantOferta;
 import com.proyectoRentCar.mantenimiento.MantUsuario;
 import com.proyectoRentCar.mantenimiento.MantVehiculos;
 import javax.swing.*;
 
 public class OpcionesMantenimiento extends javax.swing.JPanel {
 
-    private final int nivelUsuario;
+    private int nivelUsuario;
     public OpcionesMantenimiento(int nivel) {
         this.nivelUsuario = nivel;
         initComponents();
@@ -78,6 +79,7 @@ public class OpcionesMantenimiento extends javax.swing.JPanel {
         btnCten.setBorder(new javax.swing.border.MatteBorder(null));
         btnCten.setBorderPainted(false);
         btnCten.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCten.addActionListener(this::btnCtenActionPerformed);
         OpcionesMantenimiento.add(btnCten, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 134, 30));
 
         btnUsuario.setBackground(new java.awt.Color(0, 153, 153));
@@ -109,11 +111,11 @@ public class OpcionesMantenimiento extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(OpcionesMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(OpcionesMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(OpcionesMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(OpcionesMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,8 +132,12 @@ public class OpcionesMantenimiento extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGamasActionPerformed
 
     private void btnOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOfertasActionPerformed
-        configurarVentana(new MantOferta());
+        configurarVentana(new MantOferta(nivelUsuario));
     }//GEN-LAST:event_btnOfertasActionPerformed
+
+    private void btnCtenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCtenActionPerformed
+        configurarVentana(new MantClientes(nivelUsuario));
+    }//GEN-LAST:event_btnCtenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
