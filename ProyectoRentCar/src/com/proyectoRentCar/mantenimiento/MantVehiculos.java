@@ -73,6 +73,7 @@ public class MantVehiculos extends javax.swing.JFrame {
         txtCV.setEditable(true);
         btnGuardar.setEnabled(true);
         lbEstado.setEnabled(true);
+        txtIDGama.setEditable(true);
         
         rbT1.setEnabled(true);
         rbT2.setEnabled(true);
@@ -86,8 +87,6 @@ public class MantVehiculos extends javax.swing.JFrame {
         rbC1.setEnabled(true);
         rbC2.setEnabled(true);
         
-        rbS1.setEnabled(true);
-        rbS2.setEnabled(true);
     }
     
     public void bloquearCampos() {
@@ -100,6 +99,7 @@ public class MantVehiculos extends javax.swing.JFrame {
         txtCV.setEditable(false);
         btnGuardar.setEnabled(false);
         lbEstado.setEnabled(false);
+        txtIDGama.setEditable(false);
         
         rbT1.setEnabled(false);
         rbT2.setEnabled(false);
@@ -113,8 +113,6 @@ public class MantVehiculos extends javax.swing.JFrame {
         rbC1.setEnabled(false);
         rbC2.setEnabled(false);
         
-        rbS1.setEnabled(false);
-        rbS2.setEnabled(false);
     }
     
     public void resetearEstado() {
@@ -217,6 +215,7 @@ public class MantVehiculos extends javax.swing.JFrame {
         btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpiar.addActionListener(this::btnLimpiarActionPerformed);
 
+        txtIDGama.setEditable(false);
         txtIDGama.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
 
         txtDescVeh.setEditable(false);
@@ -638,14 +637,22 @@ public class MantVehiculos extends javax.swing.JFrame {
         String datos = matricula + ";" + marca + ";" + modelo + ";" + tipVeh + ";" + tipMot + ";" +
                         desVeh + ";" + tE + ";" + aA + ";" + iC + ";" + cV + ";" + cA + ";" + sV + ";" + gama;
         
+        
+        ManejoDeArchivo maV = new ManejoDeArchivo();
+        String datosGama[] = maV.BuscarDatos(gama, new File("gamas.txt"));
         if (lbEstadoB) {
-            ManejoDeArchivo maV = new ManejoDeArchivo();
             maV.ModificarDatos(lineaOriginal, datos, archivoA);
+
+            if (datosGama == null) {
+                txtDesGama.setText("");
+                txtPreGama.setText("");
+                JOptionPane.showMessageDialog(this, "ID Gama no existe");
+                return;
+            } 
             
             lineaOriginal = datos;
             JOptionPane.showMessageDialog(this, "Datos modificados correctamente");
         } else {
-            ManejoDeArchivo maV = new ManejoDeArchivo();
             maV.GuardarDatos(datos, archivoA);
             
             JOptionPane.showMessageDialog(this, "Datos registrado correctamente");
@@ -657,42 +664,26 @@ public class MantVehiculos extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String matricula = txtMatricula.getText();
-        String idGama = txtIDGama.getText();
         
         if (matricula.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese Matricula");
             return;
-        } else if (idGama.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese ID Gama");
-            return;
-        }
+        }            
         
         ManejoDeArchivo maV = new ManejoDeArchivo();
         String datos[] = maV.BuscarDatos(matricula, new File("vehiculos.txt"));
-        String datosGama[] = maV.BuscarDatos(idGama, new File("gamas.txt"));
-        
-        if (datosGama == null) {
-            txtDesGama.setText("");
-            txtPreGama.setText("");
-            JOptionPane.showMessageDialog(this, "ID Gama no existe");
-            return;
-        }
-        txtDesGama.setText(datosGama[1]);
-        
-        DecimalFormat df = new DecimalFormat("#,##0.00");
-        double precio = Double.parseDouble(datosGama[2]);
-        txtPreGama.setText(df.format(precio));
-        
+
         if (datos != null) {
+            
             habilitarCampos();
             
             cbMarca.setSelectedItem(datos[1].trim());
             txtModelo.setText(datos[2]);
             cbTV.setSelectedItem(datos[3].trim());
             cbTM.setSelectedItem(datos[4].trim());
-
             txtDescVeh.setText(datos[5]);
             txtCV.setText(datos[9]);
+            txtIDGama.setText(datos[12]);
             
             if (datos[6].equals("true")) {
                 rbT1.setSelected(true);
@@ -723,18 +714,30 @@ public class MantVehiculos extends javax.swing.JFrame {
             } else {
                 rbS2.setSelected(true);
             }
-            
+             
             lineaOriginal = String.join(";", datos);
             lbEstado.setText("MODIFICANDO");
             lbEstadoB = true;
+            
+            String idGama = txtIDGama.getText();
+            String datosGama[] = maV.BuscarDatos(idGama, new File("gamas.txt"));
+             
+            if (datosGama != null) {
+                txtDesGama.setText(datosGama[1]);
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                double precio = Double.parseDouble(datosGama[2]);
+                txtPreGama.setText(df.format(precio)); 
+            } else {
+                JOptionPane.showMessageDialog(this, "ID gama no existe");
+            }
+   
         } else {
             habilitarCampos();
+            
             limpiarDatos();
             
             txtMatricula.setText(matricula);
-            txtIDGama.setText(idGama);
-            txtDesGama.setText(datosGama[1]);
-            txtPreGama.setText(datosGama[2]);
+            rbS1.setSelected(true);
             
             lbEstado.setText("CREANDO");
             resetearEstado();

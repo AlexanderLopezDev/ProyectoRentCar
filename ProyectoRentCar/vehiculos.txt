@@ -1,1 +1,2 @@
 G0912;Jeep;Patriot;Normal;Gasolina;4x2;true;true;true;Blanco;true;true;001
+G0913;Toyota;Hilux;Normal;Diésel;Vehiculo 4x4;false;true;true;Gris;false;true;001

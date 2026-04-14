@@ -36,8 +36,8 @@ public class MantOferta extends javax.swing.JFrame {
     
     public void bloquearCampos() {
         txtIdOferta.setEditable(true);
-        txtMatricula.setEditable(true);
-                
+        
+        txtMatricula.setEditable(false);       
         lbEstado.setEnabled(false);
  
         btnGuardar.setEnabled(false);
@@ -45,8 +45,8 @@ public class MantOferta extends javax.swing.JFrame {
     
     public void habilitarCampos() {
         txtIdOferta.setEditable(false);
-        txtMatricula.setEditable(false);
         
+        txtMatricula.setEditable(true);
         lbEstado.setEnabled(true);
  
         btnGuardar.setEnabled(true);
@@ -89,6 +89,7 @@ public class MantOferta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
         jLabel2.setText("Matricula");
 
+        txtMatricula.setEditable(false);
         txtMatricula.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
@@ -221,15 +222,13 @@ public class MantOferta extends javax.swing.JFrame {
         String desc = txtDescripcionOferta.getText();
         String precioTxt = txtPrecioOferta.getText().replace(",", "");
 
-        // VALIDAR CAMPOS
-        if (id.isEmpty() || mat.isEmpty() || desc.isEmpty() || precioTxt.isEmpty()) {
+        if (id.isEmpty() || mat.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
             return;
         }
 
         double precioOferta = Double.parseDouble(precioTxt);
 
-        // VALIDAR QUE EXISTA PRECIO GAMA
         if (precioGama <= 0) {
             JOptionPane.showMessageDialog(this, "Debe buscar una matrícula válida primero");
             return;
@@ -237,7 +236,6 @@ public class MantOferta extends javax.swing.JFrame {
         
         double minimo = precioGama * 0.15;
 
-        // VALIDAR 15%
         if (precioOferta < minimo) {
             JOptionPane.showMessageDialog(this, "El precio oferta no puede ser menor al 15% del precio gama");
             return;
@@ -266,10 +264,9 @@ public class MantOferta extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
     String id = txtIdOferta.getText();
-    String matricula = txtMatricula.getText();
 
-    if (id.isEmpty() || matricula.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Ingrese ID y Matrícula");
+    if (id.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese ID oferta");
         return;
     }
 
@@ -279,14 +276,7 @@ public class MantOferta extends javax.swing.JFrame {
 
     if (datos != null) {
         // Cargar datos de la oferta
-        txtDescripcionOferta.setText(datos[1]);
-        
-        
-        DecimalFormat df = new DecimalFormat("#,##0.00");
-        double precioO = Double.parseDouble(datos[2]);
-        precioO = (precioO * 0.85);
-        
-        txtPrecioOferta.setText(df.format(precioO));
+        txtMatricula.setText(datos[1]);
 
         String datosVeh[] = maO.BuscarDatos(datos[1], new File("vehiculos.txt"));
         
@@ -296,12 +286,17 @@ public class MantOferta extends javax.swing.JFrame {
         } else {
             habilitarCampos();
             String idGama = datosVeh[12];
-
+            
             String datosGama[] = maO.BuscarDatos(idGama, new File("gamas.txt"));
-
+            
+            
             if (datosGama != null) {
                 precioGama = Double.parseDouble(datosGama[2]);
                 double precio = (precioGama);
+                
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                double precioO = (precio * 0.85);
+                txtPrecioOferta.setText(df.format(precioO));
                 
                 txtDescripcionOferta.setText(datosVeh[5] + "," + datosVeh[1] + "," + datosVeh[2] + "," +  df.format(precio));
                 
@@ -316,33 +311,14 @@ public class MantOferta extends javax.swing.JFrame {
         
         } else {
             habilitarCampos();
-            // Preparar para crear una nueva oferta
-
-            String datosVeh[] = maO.BuscarDatos(matricula, new File("vehiculos.txt"));
-            if (datosVeh == null) {
-                JOptionPane.showMessageDialog(this, "Matricula no existe");
-                return;
-            } else {
-                habilitarCampos();
-                String idGama = datosVeh[12];
-
-                String datosGama[] = maO.BuscarDatos(idGama, new File("gamas.txt"));
-
-                if (datosGama != null) {
-                    DecimalFormat df = new DecimalFormat("#,##0.00");
-                    precioGama = Double.parseDouble(datosGama[2]);
-                    double precio = precioGama;
-                
-                    txtDescripcionOferta.setText(datosVeh[5] + "," + datosVeh[1] + "," + datosVeh[2] + "," +  df.format(precio));
-                }
-            }
-            txtPrecioOferta.setText("");
-
+            String matricula = txtMatricula.getText();
             
+
             lbEstado.setText("CREANDO");
             txtIdOferta.setText(id);
             txtMatricula.setText(matricula);
             resetearEstado();
+            
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 

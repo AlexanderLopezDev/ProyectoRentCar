@@ -1,4 +1,4 @@
-001;Premium especial;15000
+001;Premium especial;150000
 002;Lujo;90000
 003;Lujo;90000
 004;Lujo;25221.50
