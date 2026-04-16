@@ -1,12 +1,20 @@
 package com.proyectoRentCar.vistas.OpcionesMenu;
-
+import com.proyectoRentCar.archivos.Movimiento.RecepcionVehiculo;
+import com.proyectoRentCar.mantenimiento.MantVehiculos;
+import javax.swing.*;
 public class OpcionesMovimiento extends javax.swing.JPanel {
+     private final int nivelUsuario;
 
-    public OpcionesMovimiento() {
+    public OpcionesMovimiento(int nivel) {
+        this.nivelUsuario = nivel;
         initComponents();
         
         btnRC.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
         btnRV.putClientProperty( "FlatLaf.style", "font: 200% $light.font" );
+    }
+
+    public OpcionesMovimiento() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @SuppressWarnings("unchecked")
@@ -28,6 +36,7 @@ public class OpcionesMovimiento extends javax.swing.JPanel {
         btnRV.setBorder(new javax.swing.border.MatteBorder(null));
         btnRV.setBorderPainted(false);
         btnRV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRV.addActionListener(this::btnRVActionPerformed);
 
         btnRC.setBackground(new java.awt.Color(0, 153, 153));
         btnRC.setFont(new java.awt.Font("Baskerville Old Face", 0, 14)); // NOI18N
@@ -88,6 +97,10 @@ public class OpcionesMovimiento extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnRCActionPerformed
 
+    private void btnRVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRVActionPerformed
+       configurarVentana(new MantVehiculos(nivelUsuario)); 
+    }//GEN-LAST:event_btnRVActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel OpcionesMovimiento;
@@ -95,4 +108,17 @@ public class OpcionesMovimiento extends javax.swing.JPanel {
     private javax.swing.JButton btnRV;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private void configurarVentana(JFrame panel) {
+        panel.setSize(900,515);
+        panel.setLocationRelativeTo(null);
+        panel.setVisible(true);
+        
+        JFrame ventana = (JFrame)SwingUtilities.getWindowAncestor(this);
+    
+        if (ventana != null) {
+            ventana.dispose();
+        }
+    }
+
 }

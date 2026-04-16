@@ -24,6 +24,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
            
     }
 
+    public MenuPrincipal() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -204,12 +208,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMantActionPerformed
 
     private void btnMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovActionPerformed
-        OpcionesMovimiento om1 = new OpcionesMovimiento();
-        om1.setSize(660,296);
-        om1.setLocation(0,0);
+        OpcionesMovimiento oc = new OpcionesMovimiento();
+        oc.setSize(660,296);
+        oc.setLocation(0,0);
         
         panelContenido.removeAll();
-        panelContenido.add(om1, BorderLayout.CENTER);
+        panelContenido.add(oc, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnMovActionPerformed

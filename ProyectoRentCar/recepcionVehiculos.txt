@@ -1,0 +1,3 @@
+RV002;G2610;2026-04-16;Entrega con ligero rayón en puerta
+RV003;C456123;2026-04-17;Vehiculo sucio al momento de entrega
+RV004;D321987;2026-04-18;Entrega sin novedades
